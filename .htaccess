@@ -1,0 +1,11 @@
+ErrorDocument 404 /error_404.html
+
+RewriteEngine On
+
+RewriteRule ^m$ views/mobile_index.php [L]
+RewriteRule ^m/([a-zA-Z0-9]{1,})$ download_mobile.php?link=$1 [L]
+
+RewriteRule ^([a-zA-Z0-9]{1,})$ download.php?link=$1 [L]
+
+ReWriteCond %{REQUEST_FILENAME} !-f
+ReWriteRule ^([^\.]+)$ $1.php [NC,L]
